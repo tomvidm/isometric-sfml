@@ -42,8 +42,8 @@ namespace common { namespace physics {
             vector::Vector2f dr = getFirstPosition(leg) - getSecondPosition(leg);
             float equilibrium_overshoot = vector::magnitude(dr) - leg.getEquilibriumLength();
             vector::Vector2f acceleration = vector::normalize(dr) * leg.getSpringConstant() * equilibrium_overshoot;
-            getFirstJoint(leg)->addForce(acceleration*(-1.f) + vector::Vector2f(0.f, 10.f), dt);
-            getSecondJoint(leg)->addForce(acceleration = vector::Vector2f(0.f, 10.f), dt);
+            getFirstJoint(leg)->addForce(acceleration*(-1.f), dt);
+            getSecondJoint(leg)->addForce(acceleration, dt);
         }
     }
 

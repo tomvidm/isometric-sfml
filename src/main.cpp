@@ -5,6 +5,8 @@
 #include "common/vector/Vector.h"
 #include "common/physics/Strandbeest.h"
 
+#include <iostream>
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pierogi2D");

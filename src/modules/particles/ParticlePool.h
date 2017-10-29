@@ -10,16 +10,32 @@ namespace modules { namespace particles {
         int i;
     }
 
+    typedef std::vector<Chunk> ChunkVector;
+
+    template <typename T>
+    struct Chunk
+    {
+        T* ptr_;
+        unsigned int chunkSize;
+    }
+
+    template <unsigned int N>
     class ParticlePool
     {
     public:
-
-        std::vector<sf::Vertex*> request(unsigned int numParticles);
+        ParticlePool();
+        ChunkVector request(unsigned int numParticles);
         void cleanup(ParticleEmitter* emitterPtr);
     private:
-        const unsigned int maxParticles;
 
+
+        const unsigned int maxObjects = N;
         sf::VertexArray vertices;
+    };
+
+    ParticlePool::ParticlePool()
+    {
+        vertices.resize(maxObjects);
     }
 }}
 
